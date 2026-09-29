@@ -31,7 +31,7 @@
 #include "zdt_device.h"     // ZTD-GENERE : ZDT_DEVICE_ID, ZDT_TOPIC_BASE, ZDT_MQTT_HOST/PORT/TLS
 #if ZDT_MQTT_TLS
 #include <WiFiClientSecure.h>
-#include "mqtt_ca.h"        // CA publique du broker -> verification serveur (pas de MITM)
+#include "mqtt_ca.h"        // CA du broker : PAS encore lue (setInsecure) -> chiffre, serveur non verifie
 #endif
 
 #ifndef PIN_OUT1

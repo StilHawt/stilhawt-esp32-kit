@@ -1,7 +1,7 @@
 // stilhawt-things shared — OTA standard : récepteur + écran "OTA EN COURS"
 // avec nom du firmware + version, JAMAIS effacé pendant le flash.
 //
-// RÈGLE (CLAUDE.md stilhawt-things) : OTA obligatoire sur tout firmware.
+// Principe : tout firmware du kit embarque l'OTA (mise a jour sans cable).
 // Extension actée user 2026-06-12 : "un bout de code dans le firmware de base
 // pour indiquer OTA en cours, avec le nom du prog/version. Jamais effacé."
 //
