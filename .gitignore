@@ -1,0 +1,3 @@
+# What a PlatformIO build leaves behind
+.pio/
+.vscode/
