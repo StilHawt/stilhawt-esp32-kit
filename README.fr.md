@@ -57,7 +57,8 @@ Puis, pour chaque exemple :
 3. **Flashez** la carte branchée en USB : `pio run -d examples/water-meter -t upload`.
 4. **Donnez-lui le WiFi et le compte MQTT** par le port série (115200 bauds), jamais dans le code :
    `WIFI <ssid> <mot de passe>` puis `MQTT <utilisateur> <mot de passe>`. Sans réseau connu,
-   l'appareil ouvre son portail captif.
+   l'appareil ouvre son portail captif. **Le broker doit avoir un compte** : sans compte, le firmware
+   n'essaie pas de se connecter, donc un broker anonyme n'est pas utilisable aujourd'hui.
 
 Les mises à jour suivantes peuvent passer par le réseau (OTA) : `pio run -d examples/water-meter -t
 upload --upload-port <adresse de l'appareil>`. **La balance** fait exception : Bluetooth et WiFi se
@@ -81,9 +82,11 @@ Ces trois points sont les prochains chantiers de ce dépôt.
 ## État
 
 Les deux exemples sont **compilés** à chaque version, depuis ce dépôt seul, dans un conteneur neuf.
-Cette version n'a pas encore été **rejouée sur une carte** à partir de ce dépôt : les firmwares
-d'origine tournent chez nous, mais la configuration publique (broker générique, TLS coupé) reste à
-éprouver en vrai. Les commentaires du code sont en français.
+Le **compteur d'eau** a aussi **tourné dans le simulateur Wokwi** depuis ce dépôt (broker public de
+test, TLS coupé) : WiFi donné par le port série, 3 vrais litres et 2 impulsions impossibles →
+`total_l=3`, `glitches=2` dans l'état publié. Non simulés : la balance (Bluetooth), l'écran, l'OTA et
+la page web. Pas encore rejoué sur une carte physique depuis ce dépôt. Les commentaires du code sont
+en français.
 
 ## Licence
 

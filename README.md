@@ -57,7 +57,8 @@ Then, for each example:
 3. **Flash** the board plugged in over USB: `pio run -d examples/water-meter -t upload`.
 4. **Give it WiFi and the MQTT account** over the serial port (115200 baud), never in the code:
    `WIFI <ssid> <password>` then `MQTT <user> <password>`. With no known network, the device opens
-   its captive portal.
+   its captive portal. **The broker must have an account**: without one the firmware never tries to
+   connect, so an anonymous broker cannot be used today.
 
 Later updates can go over the network (OTA): `pio run -d examples/water-meter -t upload
 --upload-port <device address>`. **The scale** is the exception: Bluetooth and WiFi share the radio,
@@ -80,10 +81,11 @@ These three points are the next work items of this repository.
 
 ## Status
 
-Both examples are **built** at every version, from this repository alone, in a fresh container. This
-version has not yet been **replayed on a board** from this repository: the original firmwares run at
-our place, but the public configuration (a generic broker, TLS off) is still to be proven for real.
-Code comments are in French.
+Both examples are **built** at every version, from this repository alone, in a fresh container. The
+**water meter** was also **run in the Wokwi simulator** from this repository (a public test broker,
+TLS off): WiFi given over serial, 3 real litres and 2 impossible pulses → `total_l=3`, `glitches=2`
+in the published state. Not simulated: the scale (Bluetooth), the screen, OTA and the web page. Not yet
+replayed on a physical board from this repository. Code comments are in French.
 
 ## License
 
